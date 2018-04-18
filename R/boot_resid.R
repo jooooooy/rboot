@@ -1,32 +1,4 @@
-#' Resampling residual via boostrap
-#'
-#' This function return LSE of linear model Y = X beta + epsilon, the fitted value of Y,
-#' the raw residual, the modified residual and the predicted value for new observation x_new,
-#' as well as its 95% confidence interval,
-#' @author Jingyi Lin
-#' @param Y the vector of response
-#' @param X the matrix of covariates (including intercept)
-#' @param x_new a new observation of covariates
-#' @param R the totoal times of resampling
-#' @param seed the random number generator (RNG) state
-#' @keywords Boostrap
-#' @export beta_hat LSE of linear model Y = X beta + epsilon
-#' @export Y_hat the fitted value of Y
-#' @export raw_err the raw residual
-#' @export mod_err the modified residual
-#' @export y_new the predicted for new observation x_new
-#' @export interval the 95% confidence interval for y_new
-#' @examples
-#' cat_function()
-#' library(boot)
-#' nuke <- nuclear[, c(1, 2, 5, 7, 8, 10, 11)]
-#' Y <- log(nuke$cost) # True value of Y
-#' X <- data.frame(1,nuke$date,log(nuke$cap),nuke$ne,nuke$ct,log(nuke$cum.n),nuke$pt)
-#' X <- data.matrix(X) # Desgin matrix X
-#' colnames(X) <- NULL 
-#' x_new <- c(1,73,log(886),0,0,log(11),1) # new observation
-#' R <- 1000 # Resampling sample size
-#' seed <- 921 # Random seed - a integer
+#' A Cat Function
 
 boot_resid <- function(Y,X,x_new,R,seed){
   
