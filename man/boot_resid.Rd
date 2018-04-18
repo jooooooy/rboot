@@ -28,6 +28,14 @@ as well as its 95% confidence interval,
 }
 \examples{
 library(boot)
+nuke <- nuclear[, c(1, 2, 5, 7, 8, 10, 11)]
+Y <- log(nuke$cost) # True value of Y
+X <- data.frame(1,nuke$date,log(nuke$cap),nuke$ne,nuke$ct,log(nuke$cum.n),nuke$pt)
+X <- data.matrix(X) # Desgin matrix X
+colnames(X) <- NULL 
+x_new <- c(1,73,log(886),0,0,log(11),1) # new observation
+R <- 1000 # Resampling sample size
+seed <- 921 # Random seed - a integer
 }
 \author{
 Jingyi Lin
