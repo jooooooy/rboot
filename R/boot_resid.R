@@ -1,4 +1,19 @@
-#' A Cat Function
+#' Resampling residual via boostrap
+#' This function return LSE of linear model Y = X beta + epsilon, the fitted value of Y,
+#' the raw residual, the modified residual and the predicted value for new observation x_new,
+#' as well as its 95% confidence interval,
+#' @author Jingyi Lin
+#' @param Y the vector of response
+#' @param X the matrix of covariates (including intercept)
+#' @param x_new a new observation of covariates
+#' @param R the totoal times of resampling
+#' @param seed the random number generator (RNG) state
+#' @keywords Boostrap
+#' @export 
+#' @examples
+#' library(boot)
+
+
 
 boot_resid <- function(Y,X,x_new,R,seed){
   
@@ -30,11 +45,6 @@ boot_resid <- function(Y,X,x_new,R,seed){
     beta_rsp <- inv(t(X)%*%X)%*%t(X)%*%Y_rsp
     err_rsp[i] <- x_new%*%(beta_rsp-beta_hat)-sample(cen_err,size = 1)
   }
-  
-  return(list(beta_hat = beta_hat,
-              Y_hat = Y_hat,
-              raw_err = raw_err,
-              mod_err = mod_err,
-              y_new = y_new_hat, 
-              interval=rep(y_new_hat,2)+quantile(err_rsp,c(0.025,0.975))))
+  interval=rep(y_new_hat,2)+quantile(err_rsp,c(0.025,0.975))
+  return(interval)
 }

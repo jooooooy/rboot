@@ -2,10 +2,34 @@
 % Please edit documentation in R/boot_resid.R
 \name{boot_resid}
 \alias{boot_resid}
-\title{A Cat Function}
+\title{Resampling residual via boostrap
+This function return LSE of linear model Y = X beta + epsilon, the fitted value of Y,
+the raw residual, the modified residual and the predicted value for new observation x_new,
+as well as its 95% confidence interval,}
 \usage{
 boot_resid(Y, X, x_new, R, seed)
 }
-\description{
-A Cat Function
+\arguments{
+\item{Y}{the vector of response}
+
+\item{X}{the matrix of covariates (including intercept)}
+
+\item{x_new}{a new observation of covariates}
+
+\item{R}{the totoal times of resampling}
+
+\item{seed}{the random number generator (RNG) state}
 }
+\description{
+Resampling residual via boostrap
+This function return LSE of linear model Y = X beta + epsilon, the fitted value of Y,
+the raw residual, the modified residual and the predicted value for new observation x_new,
+as well as its 95% confidence interval,
+}
+\examples{
+library(boot)
+}
+\author{
+Jingyi Lin
+}
+\keyword{Boostrap}
