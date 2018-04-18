@@ -46,5 +46,10 @@ boot_resid <- function(Y,X,x_new,R,seed){
     err_rsp[i] <- x_new%*%(beta_rsp-beta_hat)-sample(cen_err,size = 1)
   }
   interval=rep(y_new_hat,2)+quantile(err_rsp,c(0.025,0.975))
-  return(interval)
+  return(list(beta_hat = beta_hat,
+              Y_hat = Y_hat,
+              raw_err = raw_err,
+              mod_err = mod_err,
+              y_new = y_new_hat, 
+              interval=interval))
 }
